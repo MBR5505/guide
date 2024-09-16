@@ -1,0 +1,109 @@
+:root {
+    --kik: #ffff;
+    --text: #110c0c;
+}
+
+html {
+    overflow: hidden;
+}
+
+body{
+    margin: 0;
+}
+
+.body {
+    background-color: #110c0c;
+}
+
+.navUl {
+    display: flex;
+    list-style-type: none;
+    color: var(--text);
+    border-bottom: 0.25vh solid #070412;
+    margin: 0;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.navUl :first-child {
+    flex-grow: 2;
+}
+
+.guide, .login {
+    margin-left: auto;
+}
+
+.guide a {
+    margin-right: 2vw;
+}
+
+.login a {
+    margin-right: 0;
+}
+
+li {
+    list-style-type: none;
+}
+
+a {
+    color: var(--text);
+    text-decoration: none;
+}
+
+.logo {
+    max-width: 50px;
+    max-height: 50px;
+    border-radius: 50%;
+}
+
+.gridContainer {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-areas: "aside mainC mainC mainC mainC";
+    min-height: 800px;
+    width: 100%;
+}
+
+.aside {
+    grid-area: aside;
+    background-color: rgb(189, 189, 189);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    left: -50%; 
+    transition: 0.3s ease; 
+    width: 100%; 
+    /* gap: 40px; */
+    padding-left: 10px;
+    justify-content: center;
+    /* align-items: center; */
+    /* text-align: center; */
+}
+
+.aside a{
+    background-color: rgb(181, 158, 116);
+}
+
+.aside:hover {
+    left: 0;
+
+}
+
+.mainContainer {
+    grid-area: mainC;
+    background-color: #110c0c;
+    display: flex;
+    flex-direction: column;
+
+    color: wheat;
+    /* gap: 500px; */
+    overflow-y: scroll;
+    height: 100vh; 
+    overflow-x: hidden; 
+
+    padding-left: 20px;
+}
