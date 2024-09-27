@@ -88,9 +88,12 @@ a {
     background-color: rgb(181, 158, 116);
 }
 
+.aside a:hover{
+    background-color: rgb(181, 161, 125);
+}
+
 .aside:hover {
     left: 0;
-
 }
 
 .mainContainer {
@@ -106,4 +109,11 @@ a {
     overflow-x: hidden; 
 
     padding-left: 20px;
+}
+
+.kreft{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }

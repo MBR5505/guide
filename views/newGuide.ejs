@@ -1,0 +1,74 @@
+<%- include("./partials/head") %>
+<body>
+    <h1>Ny Guide</h1>
+        <div class="kreft">
+            <form class="nyGuide" id="nyGuideForm" method="post" enctype="multipart/form-data" >
+            <label for="tittel">Tittel</label>
+            <br>
+            <input type="text" name="tittel" id="tittel">
+            <br>
+            <label for="tag">Tag</label>
+            <br>
+            <input type="text" name="tag" id="tag">
+            <br>
+        
+            <div id="addNewSection">
+                <h2>Selskpm</h2>
+                <label for="overskrift">Overskrift</label>
+                <br>
+                <input type="text" name="overskrift" id="overskrift">
+                <br>
+                <label for="beskrivelse">Beskrivelse</label>
+                <br>
+                <input type="text" name="beskrivelse" id="beskrivelse">
+                <br>
+                <img id="previewImage" src="" alt="Image Preview" style="max-width: 300px; max-height: 300px;">
+                <br>
+                <input type="file" name="velgFil" id="velgFil" accept="image/png image/jpg image/jpeg">
+                <br>
+                <input type="submit" value="Submit Guide">
+            </div>
+        </form>
+        <br>
+        <button id="ja" onclick="ny()">Lag ny Seksjon</button>
+    </div>
+
+    <script defer>
+        let newSectionCount = 1; // Counter for unique IDs
+
+        function ny() {
+            newSectionCount++;
+            newSection.innerHTML += `
+                <div id="addNewSection${newSectionCount}">
+                    <h2>Selskpm</h2>
+                    <label for="overskrift">Overskrift</label>
+                    <br>
+                    <input type="text" name="overskrift" id="overskrift${newSectionCount}">
+                    <br>
+                    <label for="beskrivelse">Beskrivelse</label>
+                    <br>
+                    <input type="text" name="beskrivelse" id="beskrivelse${newSectionCount}">
+                    <br>
+                    <img id="previewImage${newSectionCount}" src="" alt="Image Preview" style="max-width: 300px; max-height: 300px;">
+                    <input type="file" name="velgFil" id="velgFil${newSectionCount}">
+                    <br>
+                </div>
+            `;
+            
+            const newFileInput = document.getElementById(`velgFil${newSectionCount}`);
+            const newPreviewImage = document.getElementById(`previewImage${newSectionCount}`);
+            
+            newFileInput.addEventListener("change", function(event) {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        newPreviewImage.src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
