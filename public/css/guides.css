@@ -1,0 +1,8 @@
+.guide {
+    display: none;
+  }
+  
+.active-guide {
+    display: block;
+}
+  

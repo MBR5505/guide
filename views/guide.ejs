@@ -5,29 +5,35 @@
         <div class="aside">
             <a class="tilbake" href="/"><p>Tilbake</p></a>
             <br>
-            <!-- pil ikon som animerer til å være forran og peke på valgte siden -->
-            <img src="" alt=""> 
-            <a class="borgir" href="#intro"><p>intro</p> </a>
-            <a class="borgir" href="#info1"><p>info1</p> </a>
-            <a class="borgir" href="#info2"><p>info2</p> </a>
-            <a class="borgir" href="#info3"><p>info3</p> </a>
-            <a class="borgir" href="#info4"><p>info4</p> </a>
-            <a class="borgir" href="#info5"><p>info5</p> </a>
-            <a class="borgir" href="#avsluttning">avsluttning</a>
+            <!-- Dynamisk genererte linker til hver seksjon -->
+            <% guide.overskrift.forEach((heading, index) => { %>
+                <% if (index === 0) { %>
+                    <a class="borgir" href="#intro"><p>Intro</p></a>
+                <% } else if (index === guide.overskrift.length - 1) { %>
+                    <a class="borgir" href="#avsluttning"><p>Avsluttning</p></a>
+                <% } else { %>
+                    <a class="borgir" href="#info<%= index %>"><p>Info <%= index %></p></a>
+                <% } %>
+            <% }) %>
         </div>
 
-
-
         <div class="mainContainer">
-            <h1>Guide Bide Lide Side</h1>
+            <h1><%= guide.tittel %></h1>
+            <img src="<%= user && user.avatar ? user.avatar : `https://ui-avatars.com/api/?name=${guide.forfatter}` %>" alt="Profile" title="<%= guide.forfatter %>" class="profile-avatar" />
 
-            <p id="intro">Guardians of the galaxy</p>
-            <p id="info1">autisme</p>
-            <p id="info2">Solskinnsdag</p>
-            <p id="info3">Justurerende utenomjordiske krefter</p>
-            <p id="info4">kommunale ferdigheter</p>
-            <p id="info5">aids</p>
-            <p id="avsluttning">kreft</p>
+            <!-- Dynamisk rendering av hver seksjon -->
+            <% guide.overskrift.forEach((heading, index) => { %>
+                <div class="section" id="<%= index === 0 ? 'intro' : (index === guide.overskrift.length - 1 ? 'avsluttning' : 'info' + index) %>">
+                    <div class="seksjonTekst">
+                        <h2><%= heading %></h2>
+                        <p><%= guide.beskrivelse[index] %></p>
+                    </div>
+                    <% if (guide.imgFile[index]) { %>
+                        <img class="guideImg" src="/uploads/<%= guide.imgFile[index].split('/').pop() %>" alt="Bilde til seksjon <%= index %>">
+                    <% } %>
+                </div>
+            <% }) %>
+
         </div>
     </div>
 </body>

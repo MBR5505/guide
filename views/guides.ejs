@@ -1,0 +1,24 @@
+<%- include("./partials/head") %>
+<body>
+    <%- include("./partials/nav") %>
+
+    <h2>Guides for: <%= tag %></h2>
+
+    <div class="guides-container">
+        <% guides.forEach(guide => { %>
+            <a href="/guide/<%= guide._id %>">
+                <div class="guide-card">
+                    <h3><%= guide.tittel %></h3>
+                    <% guide.overskrift.forEach((overskrift, index) => { %>
+                        <% if (guide.imgFile[index]) { %>
+                            <img src="<%= guide.imgFile[index] %>" alt="Guide Image for <%= guide.tittel %>" />
+                        <% } %>
+                    <% }) %>
+                </div>
+            </a>
+        <% }) %>
+    </div>
+
+    <script src="/js/søk.js" defer></script>
+</body>
+</html>

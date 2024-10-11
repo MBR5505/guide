@@ -1,25 +1,26 @@
 :root {
     --kik: #ffff;
     --text: #110c0c;
+
+    --a: #262a2f;
+    --b: #333;
+    --c: #555;
+    --d: #fff;
 }
 
-html {
-    overflow: hidden;
-}
+
 
 body{
     margin: 0;
-}
-
-.body {
-    background-color: #110c0c;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #262a2f;
 }
 
 .navUl {
     display: flex;
     list-style-type: none;
     color: var(--text);
-    border-bottom: 0.25vh solid #070412;
+    border-bottom: 0.25vh solid black;
     margin: 0;
     justify-content: space-between;
     align-items: center;
@@ -27,6 +28,7 @@ body{
     padding: 10px;
     padding-left: 40px;
     padding-right: 40px;
+    background-color: #fff;
 }
 
 .navUl :first-child {
@@ -98,7 +100,6 @@ a {
 
 .mainContainer {
     grid-area: mainC;
-    background-color: #110c0c;
     display: flex;
     flex-direction: column;
 
@@ -117,3 +118,234 @@ a {
     align-items: center;
     flex-direction: column;
 }
+
+.profile-menu {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    padding: 12px 16px;
+}
+
+.profile-menu:hover .dropdown-content {
+    display: block;
+}
+
+input[type="file"] {
+    display: block;
+}
+
+.navUl {
+    display: flex; /* Use flexbox to align items */
+    justify-content: space-between; /* Space between items */
+    align-items: center; /* Center items vertically */
+    list-style: none; /* Remove default list styles */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+}
+
+.navUl li {
+    margin: 0 15px; /* Add some spacing between items */
+}
+
+.profile-menu {
+    position: relative; /* For absolute positioning of profile options */
+}
+
+.profile-options {
+    display: none; /* Hide by default */
+    position: absolute; 
+    background: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    padding: 10px; 
+    right: 0;
+    z-index: 10; 
+}
+
+.profile-menu:hover .profile-options {
+    display: block; /* Show on hover */
+}
+
+.profile-avatar {
+    border-radius: 50%; /* Make the avatar circular */
+    width: 40px; /* Set width as desired */
+    height: 40px; /* Set height as desired */
+}
+
+/*Søk bar ting*/
+
+.search-box{
+    width: 600px;
+    background-color: #f4f0f0;
+    margin: 200px auto 0;
+    border-radius: 5px;
+}
+
+.row{
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+#input-box{
+    flex: 1;
+    height: 50px;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    font-size: 15px;
+    color: #333;
+}
+
+#søkButton{
+    background: transparent;
+    border: 0;
+    outline: 0;
+    padding-left: 300px;
+    padding-top: 30px;
+}
+
+#søkButton .fa-solid{
+    width: 25px;
+    color: #555;
+    font-size: 22px;
+    cursor: pointer;
+}
+::placeholder{
+    color: #555;
+}
+
+.result-box{
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.result-box ul{
+    border-top: 1px solid #999;
+    padding: 15px 10px;
+}
+.result-box ul li{
+    list-style: none;
+    border-radius: 3px;
+    padding: 15px 10px;
+    cursor: pointer;
+    color: #555;
+}
+
+.result-box ul li:hover{
+    background-color: #ccdcef;
+}
+
+.guides-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+.guide-card {
+    background-color: #3d3d3d;
+    border-radius: 8px;
+    margin: 10px;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.guide-card h3 {
+    margin-top: 0;
+    color: #ffffff;
+}
+
+.guide-card h4 {
+    color: #f1c40f;
+}
+
+.guide-card p {
+    color: #cccccc;
+}
+
+.guide-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.guideImg{
+    width: 25vw;
+    height: 30vh;
+}
+
+.section{
+    display: flex; 
+    flex-direction: row;
+    justify-content: center;
+    gap: 9vw;
+}
+
+.guideImg{
+    position: sticky;
+    padding-left: 5vw;
+    padding-right: 8vw;
+    padding-top: 4vh;
+}
+
+.seksjonTekst{
+    left: 0;
+}
+
+@media (max-width: 600px) {
+    .section{
+        flex-direction: column;
+    }
+}
+
+.delete-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: gray; 
+    transition: color 0.3s ease;
+} 
+
+#trash:hover{
+    color: #cc2614;
+}
+
+.delete-form{
+    display: flex;
+    justify-content:flex-end;
+    padding-bottom: 2vh;
+}
+
+#add{
+    position: absolute;
+    color: #333;
+    right: 0;
+    margin-right: 10vw;
+    font-size: 4vh;
+    transition: ease-in-out 0.3s;
+}
+
+#add:hover{
+    color: #555;
+    font-size: 5vh;
+}
+

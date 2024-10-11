@@ -1,0 +1,85 @@
+<%- include("./partials/head") %>
+<body>
+    <h1>Edit Guide: <%= guide.tittel %></h1>
+    <div class="kreft">
+        <form class="nyGuide" id="editGuideForm" method="post" enctype="multipart/form-data" action="/guide/edit/<%= guide._id %>">
+            <input type="hidden" name="newSectionCount" id="newSectionCount" value="<%= guide.overskrift.length %>">
+            <label for="tittel">Tittel</label>
+            <br>
+            <input type="text" name="tittel" id="tittel" value="<%= guide.tittel %>" required>
+            <br>
+            <label for="tag">Tag</label>
+            <br>
+            <select name="tag" id="tag" required>
+                <option value="Linux" <%= guide.tag === 'Linux' ? 'selected' : '' %>>Linux</option>
+                <option value="VM" <%= guide.tag === 'VM' ? 'selected' : '' %>>VM</option>
+                <option value="Annet" <%= guide.tag === 'Annet' ? 'selected' : '' %>>Annet</option>
+            </select>
+            <br>
+
+            <div id="sectionsContainer">
+                <% guide.overskrift.forEach((overskrift, index) => { %>
+                    <div id="addNewSection<%= index + 1 %>">
+                        <h2>Section <%= index + 1 %></h2>
+                        <label for="overskrift<%= index + 1 %>">Overskrift</label>
+                        <br>
+                        <input type="text" name="overskrift<%= index + 1 %>" id="overskrift<%= index + 1 %>" value="<%= overskrift %>" required>
+                        <br>
+                        <label for="beskrivelse<%= index + 1 %>">Beskrivelse</label>
+                        <br>
+                        <input type="text" name="beskrivelse<%= index + 1 %>" id="beskrivelse<%= index + 1 %>" value="<%= guide.beskrivelse[index] %>" required>
+                        <br>
+                        <img id="previewImage<%= index + 1 %>" src="<%= guide.imgFile[index] %>" alt="Image Preview" style="max-width: 300px; max-height: 300px;">
+                        <br>
+                        <input type="file" name="velgFil<%= index + 1 %>" id="velgFil<%= index + 1 %>" accept="image/png, image/jpg, image/jpeg" onchange="previewImage(event, <%= index + 1 %>)">
+                        <br>
+                    </div>
+                <% }) %>
+            </div>
+
+            <input type="submit" value="Update Guide">
+        </form>
+        <button id="ja" onclick="ny()">Add New Section</button>
+        <br>
+    </div>
+
+    <script defer>
+        let newSectionCount = <%= guide.overskrift.length %>;
+
+        function ny() {
+            newSectionCount++; // Increment the section count
+            document.getElementById("newSectionCount").value = newSectionCount; // Update hidden field
+
+            const newSectionHTML = `
+                <div id="addNewSection${newSectionCount}">
+                    <h2>Section ${newSectionCount}</h2>
+                    <label for="overskrift${newSectionCount}">Overskrift</label>
+                    <br>
+                    <input type="text" name="overskrift${newSectionCount}" id="overskrift${newSectionCount}" required>
+                    <br>
+                    <label for="beskrivelse${newSectionCount}">Beskrivelse</label>
+                    <br>
+                    <input type="text" name="beskrivelse${newSectionCount}" id="beskrivelse${newSectionCount}" required>
+                    <br>
+                    <img id="previewImage${newSectionCount}" src="" alt="Image Preview" style="max-width: 300px; max-height: 300px;">
+                    <br>
+                    <input type="file" name="velgFil${newSectionCount}" id="velgFil${newSectionCount}" accept="image/png, image/jpg, image/jpeg" onchange="previewImage(event, ${newSectionCount})">
+                    <br>
+                </div>
+            `;
+            document.getElementById("sectionsContainer").insertAdjacentHTML("beforeend", newSectionHTML);
+        }
+
+        function previewImage(event, index) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById(`previewImage${index}`).src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+</body>
+</html>

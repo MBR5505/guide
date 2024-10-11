@@ -1,23 +1,20 @@
 <%- include("./partials/head") %>
-<body>
 
+<body>
     <%- include("./partials/nav") %>
 
-    <form action="søk">
-        <div class="søkbar">
-            <input type="text">
-            <p>icon ting</p>
+    <div class="search-box">
+        <div class="row">
+            <form action="/index" method="post">
+                <input type="text" name="searchQuery" id="input-box" placeholder="Søk på en tag" autocomplete="off">
+                <button type="submit" id="søkButton" class="search-button">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </form>
         </div>
-    </form>
-
-    <div  class="guideContainer">
-        <div class="guide"></div>
-        <div class="guide"></div>
-        <div class="guide"></div>
-        <div class="guide"></div>
+        <div class="result-box">
+        </div>
     </div>
-
-
-
+    <script src="/js/søk.js"></script>
 </body>
 </html>

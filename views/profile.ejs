@@ -1,0 +1,34 @@
+<%- include("./partials/head") %>
+<body>
+    <%- include("./partials/nav") %>
+
+    <h2>Dine Guides | Trykk på en guide for å redigere den</h2>
+
+    <div class="guides-container">
+        <% if (guides.length > 0) { %>
+            <% guides.forEach(guide => { %>
+                <div class="guide-card">
+                    <form action="/delete-guide/<%= guide._id %>" method="POST" class="delete-form" onsubmit="return confirm('Are you sure you want to delete this guide?');">
+                        <button type="submit" class="delete-btn">
+                            <i id="trash" class="fa-solid fa-trash"></i>
+                        </button>
+                    </form>
+
+                    <a href="/edit-guide/<%= guide._id %>">
+                        <h3><%= guide.tittel %></h3>
+                        <% guide.overskrift.forEach((overskrift, index) => { %>
+                            <% if (guide.imgFile[index]) { %>
+                                <img src="<%= guide.imgFile[index] %>" alt="Guide Image for <%= guide.tittel %>" />
+                            <% } %>
+                        <% }) %>
+                    </a>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <p>No guides found.</p>
+        <% } %>
+    </div>
+
+    <script src="/js/søk.js" defer></script>
+</body>
+</html>

@@ -1,8 +1,20 @@
 <nav>
     <ul class="navUl">
-        <a href="/"><li><img class="logo" src="/img/amogos.jpeg" alt=""></li></a>
-        <a class="guide" href="/guide"><li>Guide</li></a>
-        <a class="login" href="/login"><li>Login</li></a>
-        <!-- Login teksten blir til en API logo når man logger inn liksom -->
+        <a href="/"><li><img class="logo" src="/img/userGuide.png" alt=""></li></a>
+        <a class="guide" href="/alleGuides"><li>Guides</li></a>
+        <% if (!user) { %>
+            <a class="login" href="/login"><li>Login</li></a>
+        <% } else { %>
+            <li class="profile">
+              <div class="profile-menu">
+                <img src="<%= user.avatar ? user.avatar : `https://ui-avatars.com/api/?name=${user.username}` %>" alt="Profile" class="profile-avatar" />
+                <ul class="profile-options">
+                  <li><a href="/profile">Profile</a></li>
+                  <hr>
+                  <li><a href="/logout">Logout</a></li>
+                </ul>
+              </div>
+            </li>
+        <% } %>
     </ul>
 </nav>

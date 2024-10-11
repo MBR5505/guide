@@ -1,69 +1,88 @@
 <%- include("./partials/head") %>
 <body>
     <h1>Ny Guide</h1>
-        <div class="kreft">
-            <form class="nyGuide" id="nyGuideForm" method="post" enctype="multipart/form-data" >
+    <div class="kreft">
+        <form class="nyGuide" id="nyGuideForm" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="newSectionCount" id="newSectionCount" value="1">
             <label for="tittel">Tittel</label>
             <br>
             <input type="text" name="tittel" id="tittel">
             <br>
             <label for="tag">Tag</label>
             <br>
-            <input type="text" name="tag" id="tag">
+            <select name="tag" id="tag">
+                <option value="Linux">Linux</option>
+                <option value="VM">VM</option>
+                <option value="Annet">Annet</option>
+            </select>
             <br>
-        
-            <div id="addNewSection">
-                <h2>Selskpm</h2>
-                <label for="overskrift">Overskrift</label>
-                <br>
-                <input type="text" name="overskrift" id="overskrift">
-                <br>
-                <label for="beskrivelse">Beskrivelse</label>
-                <br>
-                <input type="text" name="beskrivelse" id="beskrivelse">
-                <br>
-                <img id="previewImage" src="" alt="Image Preview" style="max-width: 300px; max-height: 300px;">
-                <br>
-                <input type="file" name="velgFil" id="velgFil" accept="image/png image/jpg image/jpeg">
-                <br>
-                <input type="submit" value="Submit Guide">
+
+            <div id="sectionsContainer">
+                <div id="addNewSection1">
+                    <h2>Selskpm</h2>
+                    <label for="overskrift1">Overskrift</label>
+                    <br>
+                    <input type="text" name="overskrift1" id="overskrift1">
+                    <br>
+                    <label for="beskrivelse1">Beskrivelse</label>
+                    <br>
+                    <input type="text" name="beskrivelse1" style="width: 300px; height: 40px;" id="beskrivelse1">
+                    <br>
+                    <img id="previewImage$" src="" alt="Image Preview" style="max-width: 300px; max-height: 300px;">
+                    <br>
+                    <input type="file" name="velgFil1" id="velgFil1" accept="image/png, image/jpg, image/jpeg">
+                    <br>
+                </div>
             </div>
+
+            <input type="submit" value="Submit Guide">
         </form>
-        <br>
         <button id="ja" onclick="ny()">Lag ny Seksjon</button>
+        <br>
     </div>
 
     <script defer>
-        let newSectionCount = 1; // Counter for unique IDs
+        let newSectionCount = 1; // Initialize the section count
 
         function ny() {
-            newSectionCount++;
-            newSection.innerHTML += `
+            newSectionCount++; // Increment the section count
+            document.getElementById("newSectionCount").value = newSectionCount; // Update hidden field
+
+            // Create a new section HTML
+            const newSectionHTML = `
                 <div id="addNewSection${newSectionCount}">
                     <h2>Selskpm</h2>
-                    <label for="overskrift">Overskrift</label>
+                    <label for="overskrift${newSectionCount}">Overskrift</label>
                     <br>
-                    <input type="text" name="overskrift" id="overskrift${newSectionCount}">
+                    <input type="text" name="overskrift${newSectionCount}" id="overskrift${newSectionCount}">
                     <br>
-                    <label for="beskrivelse">Beskrivelse</label>
+                    <label for="beskrivelse${newSectionCount}">Beskrivelse</label>
                     <br>
-                    <input type="text" name="beskrivelse" id="beskrivelse${newSectionCount}">
+                    <input type="text" name="beskrivelse${newSectionCount}" id="beskrivelse${newSectionCount}">
                     <br>
                     <img id="previewImage${newSectionCount}" src="" alt="Image Preview" style="max-width: 300px; max-height: 300px;">
-                    <input type="file" name="velgFil" id="velgFil${newSectionCount}">
+                    <br>
+                    <input type="file" name="velgFil${newSectionCount}" id="velgFil${newSectionCount}" accept="image/png, image/jpg, image/jpeg">
                     <br>
                 </div>
             `;
-            
+
+            // Append the new section to the container
+            document.getElementById("sectionsContainer").insertAdjacentHTML("beforeend", newSectionHTML);
+
+            // Add event listener for the file input of the new section
             const newFileInput = document.getElementById(`velgFil${newSectionCount}`);
-            const newPreviewImage = document.getElementById(`previewImage${newSectionCount}`);
-            
             newFileInput.addEventListener("change", function(event) {
                 const file = event.target.files[0];
                 if (file) {
                     const reader = new FileReader();
                     reader.onload = function(e) {
-                        newPreviewImage.src = e.target.result;
+                        const imgElement = document.getElementById(`previewImage${newSectionCount}`);
+                        if (imgElement) {
+                            imgElement.src = e.target.result; // Set the image preview if the element exists
+                        } else {
+                            console.error(`Image preview element not found for section index: ${newSectionCount}`);
+                        }
                     };
                     reader.readAsDataURL(file);
                 }
