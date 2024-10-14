@@ -72,7 +72,7 @@ a {
 
 .aside {
     grid-area: aside;
-    background-color: rgb(189, 189, 189);
+    background-color: var(--c);
     display: flex;
     flex-direction: column;
     position: relative;
@@ -87,7 +87,9 @@ a {
 }
 
 .aside a{
-    background-color: rgb(181, 158, 116);
+    margin: 0;
+    padding-left: 2vw;
+    transition: 0.3s ease-in-out;
 }
 
 .aside a:hover{
@@ -349,3 +351,287 @@ input[type="file"] {
     font-size: 5vh;
 }
 
+.login-container {
+    background-color: var(--d);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+.bodyForm {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--a);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.signup-container {
+    background-color: var(--d);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+.login-container h2 {
+    text-align: center;
+    color: var(--b);
+    margin-bottom: 1.5rem;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.email,
+.password {
+    margin-bottom: 1rem;
+}
+
+input[name="email"],
+input[name="password"] {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--c);
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.remember-me input {
+    margin-right: 0.5rem;
+}
+
+#submit {
+    background-color: var(--b);
+    color: var(--d);
+    border: none;
+    padding: 0.75rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#submit:hover {
+    background-color: var(--c);
+}
+
+.signup-link {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.signup-link a {
+    color: var(--b);
+    text-decoration: none;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
+
+.signup-container {
+    background-color: var(--d);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+.signup-container h2 {
+    text-align: center;
+    color: var(--b);
+    margin-bottom: 1.5rem;
+}
+
+input[name="username"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--c);
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.login-link {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.login-link a {
+    color: var(--b);
+    text-decoration: none;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+
+.ny-guide-container {
+font-family: Arial, sans-serif;
+line-height: 1.6;
+color: var(--d);
+max-width: 800px;
+margin: 0 auto;
+padding: 20px;
+background-color: var(--a);
+}
+
+.ny-guide-container .ny-guide-title {
+color: var(--d);
+text-align: center;
+margin-bottom: 30px;
+font-size: 2em;
+font-weight: bold;
+}
+
+.ny-guide-container .kreft {
+background-color: var(--b);
+padding: 30px;
+border-radius: 8px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.ny-guide-container form {
+display: flex;
+flex-direction: column;
+}
+
+.ny-guide-container label {
+margin-top: 10px;
+font-weight: bold;
+color: var(--d);
+}
+
+.ny-guide-container input[type="text"],
+.ny-guide-container select {
+width: 100%;
+padding: 8px;
+margin-top: 5px;
+margin-bottom: 15px;
+border: 1px solid var(--c);
+border-radius: 4px;
+background-color: var(--a);
+color: var(--d);
+}
+
+.ny-guide-container input[type="submit"],
+.ny-guide-container #ja {
+background-color: var(--c);
+color: var(--d);
+padding: 10px 15px;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+font-size: 16px;
+margin-top: 20px;
+transition: background-color 0.3s ease;
+}
+
+.ny-guide-container input[type="submit"]:hover,
+.ny-guide-container #ja:hover {
+background-color: #666;
+}
+
+.ny-guide-container #ja {
+background-color: #3a3a3a;
+margin-top: 10px;
+}
+
+.ny-guide-container #ja:hover {
+background-color: #4a4a4a;
+}
+
+.ny-guide-container .file-drop-area {
+position: relative;
+display: flex;
+align-items: center;
+width: 100%;
+max-width: 100%;
+padding: 25px;
+border: 2px dashed var(--c);
+border-radius: 3px;
+transition: 0.2s;
+background-color: var(--a);
+margin-top: 10px;
+}
+
+.ny-guide-container .file-drop-area.is-active {
+background-color: #2c3136;
+}
+
+.ny-guide-container .fake-btn {
+flex-shrink: 0;
+background-color: var(--c);
+border: 1px solid var(--c);
+border-radius: 3px;
+padding: 8px 15px;
+margin-right: 10px;
+font-size: 12px;
+text-transform: uppercase;
+color: var(--d);
+}
+
+.ny-guide-container .file-msg {
+font-size: 14px;
+font-weight: 300;
+line-height: 1.4;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+color: var(--d);
+}
+
+.ny-guide-container .file-input {
+position: absolute;
+left: 0;
+top: 0;
+height: 100%;
+width: 100%;
+cursor: pointer;
+opacity: 0;
+}
+
+.ny-guide-container #sectionsContainer > div {
+margin-bottom: 30px;
+padding-bottom: 20px;
+border-bottom: 1px solid var(--c);
+}
+
+.ny-guide-container #sectionsContainer > div:last-child {
+border-bottom: none;
+}
+
+.ny-guide-container .section-title {
+color: var(--d);
+margin-top: 20px;
+font-size: 1.5em;
+font-weight: bold;
+}
+
+.ny-guide-container .preview-image {
+display: block;
+margin-top: 10px;
+border: 1px solid var(--c);
+border-radius: 4px;
+max-width: 300px;
+max-height: 300px;
+}
+
+h2{
+    color: var(--d);
+} 

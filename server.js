@@ -314,8 +314,9 @@ app.post("/newGuide", authMiddleware, upload.fields([
 
       const savedGuide = await newGuide.save();
       res
-        .status(201)
-        .json({ message: "Guide created successfully", guide: savedGuide });
+        // .status(201)
+        // .json({ message: "Guide created successfully", guide: savedGuide });
+        .redirect("/profile");
         
     } catch (error) {
       res

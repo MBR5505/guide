@@ -1,20 +1,24 @@
 <%- include("./partials/head") %>
 
-<body>
-    <form action="/login" method="post">
-        <div class="email">
-            <input name="email" type="email" placeholder="Email" required>
+<body class="bodyForm">
+    <div class="login-container">
+        <h2>Login</h2>
+        <form action="/login" class="login-form" method="post">
+            <div class="email">
+                <input name="email" type="email" placeholder="Email" required>
+            </div>
+            <div class="password">
+                <input name="password" type="password" placeholder="Password" required>
+            </div>
+            <div class="remember-me">
+                <input type="checkbox" name="rememberMe" id="rememberMe">
+                <label for="rememberMe">Remember me</label>
+            </div>
+            <button type="submit" id="submit">Logg inn</button>
+        </form>
+        <div class="signup-link">
+            <a href="/signup">Ikke bruker</a>
         </div>
-        <div class="password">
-            <input name="password" type="password" placeholder="Password" required>
-        </div>
-        <div class="remember-me">
-            <input type="checkbox" name="rememberMe" id="rememberMe">
-            <label for="rememberMe">Remember me</label>
-        </div>
-        <button type="submit" id="submit">Logger inn</button>
-    </form>
-
-    <a href="/signup">Ikke bruker</a>
+    </div>
 </body>
 </html>
