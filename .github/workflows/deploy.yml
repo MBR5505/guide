@@ -34,7 +34,7 @@ jobs:
       - name: Verify PM2 status
         run: |
           pm2 status
-          if pm2 list | grep -qE "errored|stopped; then
+          if pm2 list | grep -qE "errored|stopped"; then
             echo "One or more processes have errored or stopped"
             exit 1
           fi
